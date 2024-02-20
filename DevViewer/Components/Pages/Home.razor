@@ -1,0 +1,64 @@
+﻿@page "/"
+@rendermode InteractiveServer
+
+
+@using System.Text.Json;
+@using System.Text.Json.Serialization;
+@using System.Text;
+@using System.Net.Http;
+@using Microsoft.JSInterop;
+@inject IHttpClientFactory ClientFactory
+@inject IJSRuntime JS
+
+<PageTitle>B50</PageTitle>
+
+<button @onclick=SaveImgToLocal>Save Image</button>
+<p>
+    <img id="B50image" />
+</p>
+
+
+@code {
+
+    private async Task<Stream> SetImageStreamAsync()
+    {
+
+        var request = new HttpRequestMessage(HttpMethod.Post,
+                  "http://localhost:5141/api/B50/ScoreImageQQ");
+
+
+        var payload = new { qq = "1064136783", b50 = true };
+        var payloadContent = new StringContent(JsonSerializer.Serialize(payload), Encoding.UTF8, "application/json");
+
+
+        request.Content = payloadContent;
+        var client = ClientFactory.CreateClient();
+
+        var response = await client.SendAsync(request);
+
+        return await response.Content.ReadAsStreamAsync(); 
+
+
+
+    }
+
+        internal async Task SaveImgToLocal()
+        {
+            var imageStream = await SetImageStreamAsync();
+            var dotnetImageStream = new DotNetStreamReference(imageStream);
+            await JS.InvokeVoidAsync("IMAGE_STREAMGER.Save", dotnetImageStream, "b50.png");
+        }
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        //if (firstRender)
+        //{
+            var imageStream = await SetImageStreamAsync();
+            var dotnetImageStream = new DotNetStreamReference(imageStream);
+            await JS.InvokeVoidAsync("IMAGE_STREAMGER.UpdateImg", "B50image", dotnetImageStream);
+
+        //}
+    }
+
+}

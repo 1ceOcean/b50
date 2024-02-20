@@ -1,0 +1,26 @@
+﻿@page "/weather"
+@rendermode InteractiveServer
+@using Microsoft.JSInterop
+@inject IJSRuntime JS
+
+<PageTitle>Prerendered Interop 1</PageTitle>
+
+
+
+<script type="text/javascript" src="test.js"></script>
+<h1>Prerendered Interop Example 1</h1>
+
+<div @ref="divElement">Text during render</div>
+
+@code {
+    private ElementReference divElement;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync(
+                "setElementText1", divElement, "Text after render");
+        }
+    }
+}
