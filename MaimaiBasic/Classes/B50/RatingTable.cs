@@ -9,37 +9,24 @@ public static class RatingTable
 {
 
     /// <summary>
-    /// Only Contains greater than S score Rating.
+    /// Only Contains greater than SS score Rating.
     /// </summary>
-    public static Rating?[,] SUpTable { get; private set; }
+    public static Rating?[,] SSUpTable { get; private set; }
 
     static RatingTable()
     {
-        
-        SUpTable = GenerateSupTable();
+        SSUpTable = GenerateSSUpTable();
     }
 
-    public static Rating? GetGreaterThanRatingMinRating(Rate rate, int rating)
+    public static Rating? GetGreaterThanRatingMinRating(int rateIndex, int rating)
     {
-        var index = rate switch
-        {
-            Rate.S => 5,
-            Rate.SPlus => 4,
-            Rate.SS => 3,
-            Rate.SSPlus => 2,
-            Rate.SSS => 1,
-            Rate.SSSPlus => 0,
-            _ => -1,
-        };
-
-        if (index < 0) return null;
-
-        Rating? ret = SUpTable[index, rating];
+        var index = rateIndex - 10;
+        Rating? ret = SSUpTable[index, rating];
         for (int i = rating + 1; i < 338; i++)
         {
-            if (SUpTable[index, i] is not null) 
+            if (SSUpTable[index, i] is not null) 
             {
-                ret = SUpTable[index, i];
+                ret = SSUpTable[index, i];
                 break;
             }
         }
@@ -47,20 +34,22 @@ public static class RatingTable
         return ret;
     }
 
-    internal static Rating?[,] GenerateSupTable() 
+    internal static Rating?[,] GenerateSSUpTable() 
     {
-        var res = new (Rate, double)?[6, 338];
+        var result = new (Rate, double)?[4, 338];
+
+        var offset = 10;
 
         var table = GenerateFullTable();
         for (int i = 0; i<table.Count; i++)
         {
-            for (int j = RateExtensions.RateArray.Length - 1; j >= RateExtensions.RateArray.Length - 1 - 5; j--)
-            {
-                res[RateExtensions.RateArray.Length - 1 - j, table[i][RateExtensions.RateArray[j]]] = (RateExtensions.RateArray[j], table[i].Ds);
-            }
+            result[(int)Rate.SSSPlus - offset,table[i][(int)Rate.SSSPlus]] = (Rate.SSSPlus, table[i].Ds);
+            result[(int)Rate.SSS - offset,table[i][(int)Rate.SSS]] = (Rate.SSS, table[i].Ds);
+            result[(int)Rate.SSPlus - offset,table[i][(int)Rate.SSPlus]] = (Rate.SSPlus, table[i].Ds);
+            result[(int)Rate.SS - offset,table[i][(int)Rate.SS]] = (Rate.SS, table[i].Ds);
         }
 
-        return res;
+        return result;
     }
 
     internal static List<RatingLine> GenerateFullTable()
@@ -69,14 +58,7 @@ public static class RatingTable
 
         for (int ds = 150; ds >= 10; ds--)
         {
-            var rl = new RatingLine();
-
-            for (int i = 0; i < RateExtensions.RateArray.Length; i++)
-            {
-                rl[RateExtensions.RateArray[i]] = RateExtensions.RateArray[i].ToAchievement().Rating(ds) / 10;
-            }
-
-            rl.Ds = ds / 10d;
+            var rl = new RatingLine(ds);
             list.Add(rl);
         }
 
@@ -87,91 +69,25 @@ public static class RatingTable
 public class RatingLine
 {
     public double Ds { get; set; }
-    public int SSSPlus { get; set; }
-    public int SSS { get; set; }
-    public int SSPlus { get; set; }
-    public int SS { get; set; }
-    public int SPlus { get; set; }
-    public int S { get; set; }
-    public int AAA { get; set; }
-    public int AA { get; set; }
-    public int A { get; set; }
-    public int BBB { get; set; }
-    public int BB { get; set; }
-    public int B { get; set; }
-    public int C { get; set; }
-    public int D { get; set; }
+
+    private Dictionary<Rate, int> _dict;
+
+    public RatingLine(int ds) 
+    {   
+        _dict = Extension.RateArray.ToDictionary(rate => rate, rate => rate.ToAchievement().Rating(ds) / 10);
+        Ds = ds / 10d;
+    }
+
+    public int this[int rateIndex] 
+    {
+        get => _dict[(Rate)rateIndex];
+        set => _dict[(Rate)rateIndex] = value;
+    }
 
     public int this[Rate rate]
     {
-        get => rate switch
-        {
-            Rate.D => this.D,
-            Rate.C => this.C,
-            Rate.B => this.B,
-            Rate.BB => this.BB,
-            Rate.BBB => this.BBB,
-            Rate.A => this.A,
-            Rate.AA => this.AA,
-            Rate.AAA => this.AAA,
-            Rate.S => this.S,
-            Rate.SPlus => this.SPlus,
-            Rate.SS => this.SS,
-            Rate.SSPlus => this.SSPlus,
-            Rate.SSS => this.SSS,
-            Rate.SSSPlus => this.SSSPlus,
-            _ => throw new Exception()
-        };
-
-
-        set
-        {
-            switch (rate)
-            {
-                case Rate.D:
-                    this.D = value;
-                    break;
-                case Rate.C:
-                    this.C = value;
-                    break;
-                case Rate.B:
-                    this.B = value;
-                    break;
-                case Rate.BB:
-                    this.BB = value;
-                    break;
-                case Rate.BBB:
-                    this.BBB = value;
-                    break;
-                case Rate.A:
-                    this.A = value;
-                    break;
-                case Rate.AA:
-                    this.AA = value;
-                    break;
-                case Rate.AAA:
-                    this.AAA = value;
-                    break;
-                case Rate.S:
-                    this.S = value;
-                    break;
-                case Rate.SPlus:
-                    this.SPlus = value;
-                    break;
-                case Rate.SS:
-                    this.SS = value;
-                    break;
-                case Rate.SSPlus:
-                    this.SSPlus = value;
-                    break;
-                case Rate.SSS:
-                    this.SSS = value;
-                    break;
-                case Rate.SSSPlus:
-                    this.SSSPlus = value;
-                    break;
-            }
-        }
+        get => _dict[rate];
+        set => _dict[rate] = value;
     }
 }
 

@@ -253,7 +253,7 @@ public class ImageGenerator : IImageGenerator, IDisposable
         for (int i = 0; i < 4; i++)
         {
             newP.Offset(158.5f, 0);
-            var rate = RatingTable.GetGreaterThanRatingMinRating(RateExtensions.RateArray[RateExtensions.RateArray.Length - 1 - i], sdMin + 3);
+            var rate = RatingTable.GetGreaterThanRatingMinRating(13 - i, sdMin + 3);
             var text = "-";
             if (rate is not null)
                 text = rate?.ds.ToString("#0.0");
@@ -269,7 +269,7 @@ public class ImageGenerator : IImageGenerator, IDisposable
         for (int i = 0; i < 4; i++)
         {
             newP.Offset(158.5f, 0);
-            var rate = RatingTable.GetGreaterThanRatingMinRating(RateExtensions.RateArray[RateExtensions.RateArray.Length - 1 - i], sdMin);
+            var rate = RatingTable.GetGreaterThanRatingMinRating(13 - i, sdMin);
             var text = "-";
             if (rate is not null)
                 text = rate?.ds.ToString("#0.0");
@@ -288,7 +288,7 @@ public class ImageGenerator : IImageGenerator, IDisposable
         for (int i = 0; i < 4; i++)
         {
             newP.Offset(158.5f, 0);
-            var rate = RatingTable.GetGreaterThanRatingMinRating(RateExtensions.RateArray[RateExtensions.RateArray.Length - 1 - i], dxMin + 3);
+            var rate = RatingTable.GetGreaterThanRatingMinRating(13 - i, dxMin + 3);
             var text = "-";
             if (rate is not null)
                 text = rate?.ds.ToString("#0.0");
@@ -304,7 +304,7 @@ public class ImageGenerator : IImageGenerator, IDisposable
         for (int i = 0; i < 4; i++)
         {
             newP.Offset(158.5f, 0);
-            var rate = RatingTable.GetGreaterThanRatingMinRating(RateExtensions.RateArray[RateExtensions.RateArray.Length - 1 - i], dxMin);
+            var rate = RatingTable.GetGreaterThanRatingMinRating(13 - i, dxMin);
             var text = "-";
             if (rate is not null)
                 text = rate?.ds.ToString("#0.0");
