@@ -103,13 +103,12 @@ public class ImageGenerator : IImageGenerator, IDisposable
         _imgSurface.Canvas.DrawBitmap(resizedFrameWork, 46, 40);
     }
 
-    private void DrawAvatar()
+    private void DrawAvatar(B50Info? info)
     {
         //56 50 (154,154) roundrect radius 12px
-        var resizedAvatar = SongAssets.DefaultAvatar.Resize(new SKImageInfo(154, 154), SKFilterQuality.Medium);
-
+        var avatar = SKBitmap.Decode(info?.QQAvatar) ?? SongAssets.DefaultAvatar;
+        var resizedAvatar = avatar.Resize(new SKImageInfo(154, 154), SKFilterQuality.Medium);
         _imgSurface.Canvas.DrawBitmap(resizedAvatar, 56, 50);
-
     }
 
     private void DrawRating(B50Info? info)
@@ -145,18 +144,20 @@ public class ImageGenerator : IImageGenerator, IDisposable
 
     }
 
-    private void DrawName(B50Info info)
+    private void DrawName(B50Info? info)
     {
         //213 102 Rect 354 64 radius 6px 
         var rect = new SKRect(0, 0, 354, 64);
         var roundrect = new SKRoundRect(rect, 6);
         roundrect.Offset(214, 102);
 
-        var paint = new SKPaint();
-        paint.Style = SKPaintStyle.Fill;
-        paint.IsAntialias = true;
-        //paint.MaskFilter = SKMaskFilter.CreateBlur(SKBlurStyle.Normal,2);
-        paint.Color = SKColors.White;
+        var paint = new SKPaint
+        {
+            Style = SKPaintStyle.Fill,
+            IsAntialias = true,
+            //paint.MaskFilter = SKMaskFilter.CreateBlur(SKBlurStyle.Normal,2);
+            Color = SKColors.White
+        };
         _imgSurface.Canvas.DrawRoundRect(roundrect, paint);
 
         // inner 2px shadow color(110)
@@ -314,18 +315,12 @@ public class ImageGenerator : IImageGenerator, IDisposable
         #endregion // dxmin
 
         #endregion //rating
-
-        #region SSS+
-
-        #endregion // SSS+
-
-
     }
 
     void DrawNamePlate(B50Info? info) 
     {
         DrawNameFramework();
-        DrawAvatar();
+        DrawAvatar(info);
         DrawRating(info);
         DrawName(info);
     }

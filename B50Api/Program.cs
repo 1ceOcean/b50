@@ -31,10 +31,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<IGetCover, GetCoverImpl>();
+builder.Services.AddSingleton<IImageService, ImageServiceImpl>();
 builder.Services.AddScoped<IImageGenerator, ImageGenerator>();
-
-
 builder.Services.AddSingleton<IFetchSongList, FetchSongListImpl>(p =>
 {
     var jsonOpt = new JsonSerializerOptions();
@@ -53,7 +51,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapControllers();
-//before run app, fetch song list ahead.
+
+//before run app, fetch song list ahead, because divingfish api so slowly,
 var songList = app.Services.GetService<IFetchSongList>();
 await songList!.UpDateDict();
 

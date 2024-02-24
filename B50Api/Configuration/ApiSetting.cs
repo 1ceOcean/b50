@@ -12,6 +12,8 @@ public class ApiSetting
     public string? CoverPrefix { get; set; }
     public string? CoverSuffix { get; set; }
 
+    public string? QQAvatarUrl {get; set;}
+
     public TimeOnly? UpdateSongListTime { get; set; }
     public string? SongListPath { get; set; }
 }

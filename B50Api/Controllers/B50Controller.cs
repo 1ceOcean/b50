@@ -4,6 +4,7 @@ using B50Api.Interface;
 using ImageGenerate;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.IO.Pipes;
 using System.Text;
 using System.Text.Json;
 
@@ -14,14 +15,14 @@ namespace B50;
 public class B50Controller : ControllerBase
 {
     private readonly ISongClient _client;
-    private readonly IGetCover _getCover;
+    private readonly IImageService _imageService;
     private readonly IImageGenerator _imageGenerator;
     private readonly IFetchSongList _songInfos;
 
-    public B50Controller(ISongClient client, IGetCover getCover, IImageGenerator imageGenerator, IFetchSongList songInfos)
+    public B50Controller(ISongClient client, IImageService imageService, IImageGenerator imageGenerator, IFetchSongList songInfos)
     {
         _client = client;
-        _getCover = getCover;
+        _imageService = imageService;
         _imageGenerator = imageGenerator;
         _songInfos = songInfos;
     }
@@ -38,6 +39,13 @@ public class B50Controller : ControllerBase
         }
 
         var result = JsonSerializer.Deserialize<B50Info>(stream);
+        
+        if(result is null)
+            return NotFound($"qq: {payload.qq} not found b50.");
+
+        using var qqAvatarStream = await _imageService.GetQQAvatarAsStream(payload.qq,CancellationToken.None);
+        
+        result.QQAvatar = qqAvatarStream;
 
         var dict = new Dictionary<int, Stream>();
 
@@ -102,13 +110,4 @@ public class B50Controller : ControllerBase
         var s = _imageGenerator.GenerateImage(result!, dict, _songInfos.SongInfos);
         return File(s, "image/png");
     }
-
-    [HttpGet("Cover")]
-    public async Task<IActionResult> Cover(int id)
-    {
-        return File(await _getCover.GetCoverAsStream(id, CancellationToken.None), "image/png");
-
-    }
-
-
 }

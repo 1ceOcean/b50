@@ -23,4 +23,7 @@ public class B50Info
 	
 	[JsonPropertyName("username")]
 	public string? UserName {get;set;}
+
+	[JsonIgnore]
+	public Stream? QQAvatar {get; set;}
 }
