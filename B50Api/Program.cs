@@ -24,7 +24,6 @@ builder.Services.AddHttpClient<ISongClient,DivingFishClient>("DivingFish", c =>
 });
 #endif
 
-
 builder.Services.AddHealthChecks();
 
 builder.Services.AddControllers();
@@ -41,13 +40,8 @@ builder.Services.AddSingleton<IFetchSongList, FetchSongListImpl>(p =>
     var jsonOpt = new JsonSerializerOptions();
     jsonOpt.Converters.Add(new SongInfoConverter());
     var res = new FetchSongListImpl(p.GetService<ISongClient>()!, p.GetService<ApiSetting>()!, jsonOpt);
-    //fetch Dict immediately
-    res.UpDateDict().GetAwaiter().GetResult();
     return res;
 });
-
-
-
 
 var app = builder.Build();
 
@@ -59,7 +53,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapControllers();
-//app.UseHttpsRedirection();
+//before run app, fetch song list ahead.
+var songList = app.Services.GetService<IFetchSongList>();
+await songList!.UpDateDict();
+
 
 app.Run();
 

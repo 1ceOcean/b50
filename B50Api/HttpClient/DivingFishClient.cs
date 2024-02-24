@@ -1,4 +1,5 @@
 ﻿using B50Api.Interface;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace B50;
@@ -11,11 +12,18 @@ public class DivingFishClient : ISongClient
 
     private readonly ApiSetting _apiSetting;
 
+    private readonly MemoryStream _streamCover;
+
     public DivingFishClient(HttpClient client, IConfiguration configuration)
     {
         Client = client;
 
         _apiSetting = configuration.GetSection("B50Setting:ApiSetting").Get<ApiSetting>()!;
+
+        var assembly = Assembly.GetExecutingAssembly();
+        using var fileStreamcover = assembly.GetManifestResourceStream("B50Api.LocalFiles.00000.png");
+        _streamCover = new MemoryStream();
+        fileStreamcover!.CopyTo(_streamCover);
     }
 
     public async Task<Stream> GetUserB50Async(UseQQ value, CancellationToken token)
@@ -51,8 +59,9 @@ public class DivingFishClient : ISongClient
                 return stream;
             }
             catch (FileNotFoundException)
-            {
-                return Stream.Null;
+            {   
+                _streamCover.Position = 0;
+                return _streamCover;
             }
         }
 
