@@ -13,8 +13,8 @@ public enum FS
 	FS,
 	[EnumMember(Value = "fsp")]
 	FSPlus,
-	[EnumMember(Value = "fdx")]
+	[EnumMember(Value = "fsd")]
 	FDX,
-	[EnumMember(Value = "fdxp")]
+	[EnumMember(Value = "fsdp")]
 	FDXPlus,
 }

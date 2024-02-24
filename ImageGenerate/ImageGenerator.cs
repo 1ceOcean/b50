@@ -374,6 +374,8 @@ public class ImageGenerator : IImageGenerator, IDisposable
 
         if (fc == FC.FC)
             fcWillDraw = SongAssets.FC;
+        else if(fc == FC.FCPlus)
+            fcWillDraw = SongAssets.FCPlus;
         else if (fc == FC.AP)
             fcWillDraw = SongAssets.FCPlus;
         else if (fc == FC.APPlus)
@@ -388,6 +390,8 @@ public class ImageGenerator : IImageGenerator, IDisposable
             fsWillDraw = SongAssets.FSPlus;
         else if (fs == FS.FDX)
             fsWillDraw = SongAssets.FDX;
+        else if(fs == FS.FDXPlus)
+            fsWillDraw = SongAssets.FDXPlus;
         else
             fsWillDraw = SongAssets.NoneSpecialRate;
 
