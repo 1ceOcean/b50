@@ -8,10 +8,26 @@
 
   <ItemGroup>
     <PackageReference Include="SkiaSharp" Version="2.88.7" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="2.88.7" />
   </ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\MaimaiBasic\MaimaiBasic.csproj" />
 	</ItemGroup>
+
+  <ItemGroup>
+  <EmbeddedResource Include="assets\font\*.ttf" />
+  <EmbeddedResource Include="assets\font\*.otf" />
+  <EmbeddedResource Include="assets\images\*.png" />
+  <EmbeddedResource Include="assets\images\版本\*.png" />
+  <EmbeddedResource Include="assets\images\背景板\*.png" />
+  <EmbeddedResource Include="assets\images\称号\*.png" />
+  <EmbeddedResource Include="assets\images\框\*.png" />
+  <EmbeddedResource Include="assets\images\评级\*.png" />
+  <EmbeddedResource Include="assets\images\特殊标识\*.png" />
+  <EmbeddedResource Include="assets\images\星级\*.png" />
+  <EmbeddedResource Include="assets\images\RAT框\*.png" />
+
+  </ItemGroup>
 
 </Project>

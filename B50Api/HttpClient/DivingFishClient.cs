@@ -1,4 +1,5 @@
 ﻿using B50Api.Interface;
+using System.Runtime.InteropServices;
 
 namespace B50;
 
@@ -40,7 +41,21 @@ public class DivingFishClient : ISongClient
     }
 
     public async Task<Stream> GetCover(int coverId, CancellationToken token)
-    {
+    {   
+        if(_apiSetting.UseLocalCover) 
+        {
+            try
+            {
+                var bytes = await File.ReadAllBytesAsync($"{_apiSetting.CoverLocalPath}/{_apiSetting.CoverPrefix}{coverId:D5}{_apiSetting.CoverSuffix}.png");
+                var stream = new MemoryStream(bytes);
+                return stream;
+            }
+            catch (FileNotFoundException)
+            {
+                return Stream.Null;
+            }
+        }
+
         var respon = await Client.GetAsync($"{_apiSetting.CoverUrl}/{coverId:D5}.png", token);
         return await respon.Content.ReadAsStreamAsync();
     }

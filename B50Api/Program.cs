@@ -5,7 +5,6 @@ using B50;
 using B50Api.Interface;
 using ImageGenerate;
 using MaimaiBasic.Utils;
-using System.Diagnostics.Eventing.Reader;
 using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -60,7 +59,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapControllers();
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.Run();
 

@@ -3,16 +3,36 @@
   "WorkspaceRootPath": "E:\\Projects\\b50\\B50Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FB108BBE-8EEB-4425-B409-22D3E576CDEB}|..\\MaimaiBasic\\MaimaiBasic.csproj|e:\\projects\\b50\\maimaibasic\\extensions\\rateextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EBD670DB-AEBF-4948-A203-79FDBD59B329}|B50Api.csproj|e:\\projects\\b50\\b50api\\httpclient\\divingfishclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBD670DB-AEBF-4948-A203-79FDBD59B329}|B50Api.csproj|solutionrelative:httpclient\\divingfishclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBD670DB-AEBF-4948-A203-79FDBD59B329}|B50Api.csproj|e:\\projects\\b50\\b50api\\httpclient\\dummyclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBD670DB-AEBF-4948-A203-79FDBD59B329}|B50Api.csproj|solutionrelative:httpclient\\dummyclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBD670DB-AEBF-4948-A203-79FDBD59B329}|B50Api.csproj|e:\\projects\\b50\\b50api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{EBD670DB-AEBF-4948-A203-79FDBD59B329}|B50Api.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FB108BBE-8EEB-4425-B409-22D3E576CDEB}|..\\MaimaiBasic\\MaimaiBasic.csproj|e:\\projects\\b50\\maimaibasic\\classes\\b50\\ratingtable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB108BBE-8EEB-4425-B409-22D3E576CDEB}|..\\MaimaiBasic\\MaimaiBasic.csproj|e:\\projects\\b50\\maimaibasic\\extensions\\rateextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FB108BBE-8EEB-4425-B409-22D3E576CDEB}|..\\MaimaiBasic\\MaimaiBasic.csproj|e:\\projects\\b50\\maimaibasic\\enums\\rate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{52BF8C62-D253-4CA1-B565-184B9C491A49}|..\\ImageGenerate\\ImageGenerator.csproj|e:\\projects\\b50\\imagegenerate\\imagegenerator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBD670DB-AEBF-4948-A203-79FDBD59B329}|B50Api.csproj|e:\\projects\\b50\\b50api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBD670DB-AEBF-4948-A203-79FDBD59B329}|B50Api.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EBD670DB-AEBF-4948-A203-79FDBD59B329}|B50Api.csproj|e:\\projects\\b50\\b50api\\configuration\\apisetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EBD670DB-AEBF-4948-A203-79FDBD59B329}|B50Api.csproj|solutionrelative:configuration\\apisetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,11 +42,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "DummyClient.cs",
+              "DocumentMoniker": "E:\\Projects\\b50\\B50Api\\HttpClient\\DummyClient.cs",
+              "RelativeDocumentMoniker": "HttpClient\\DummyClient.cs",
+              "ToolTip": "E:\\Projects\\b50\\B50Api\\HttpClient\\DummyClient.cs",
+              "RelativeToolTip": "HttpClient\\DummyClient.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAUwBsAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-23T09:30:07.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Projects\\b50\\B50Api\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "E:\\Projects\\b50\\B50Api\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABIAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-23T09:23:34.809Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ApiSetting.cs",
+              "DocumentMoniker": "E:\\Projects\\b50\\B50Api\\Configuration\\ApiSetting.cs",
+              "RelativeDocumentMoniker": "Configuration\\ApiSetting.cs",
+              "ToolTip": "E:\\Projects\\b50\\B50Api\\Configuration\\ApiSetting.cs",
+              "RelativeToolTip": "Configuration\\ApiSetting.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-23T09:23:14.206Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DivingFishClient.cs",
+              "DocumentMoniker": "E:\\Projects\\b50\\B50Api\\HttpClient\\DivingFishClient.cs",
+              "RelativeDocumentMoniker": "HttpClient\\DivingFishClient.cs",
+              "ToolTip": "E:\\Projects\\b50\\B50Api\\HttpClient\\DivingFishClient.cs",
+              "RelativeToolTip": "HttpClient\\DivingFishClient.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAxwDMAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-23T09:22:50.043Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\Projects\\b50\\B50Api\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "E:\\Projects\\b50\\B50Api\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-02-23T09:20:06.498Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "RatingTable.cs",
               "DocumentMoniker": "E:\\Projects\\b50\\MaimaiBasic\\Classes\\B50\\RatingTable.cs",
               "RelativeDocumentMoniker": "..\\MaimaiBasic\\Classes\\B50\\RatingTable.cs",
@@ -34,11 +119,12 @@
               "RelativeToolTip": "..\\MaimaiBasic\\Classes\\B50\\RatingTable.cs",
               "ViewState": "AQIAAB0AAAAAAAAAAAAawCsAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-23T08:33:46.421Z"
+              "WhenOpened": "2024-02-23T08:33:46.421Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "RateExtensions.cs",
               "DocumentMoniker": "E:\\Projects\\b50\\MaimaiBasic\\Extensions\\RateExtensions.cs",
               "RelativeDocumentMoniker": "..\\MaimaiBasic\\Extensions\\RateExtensions.cs",
@@ -51,7 +137,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Rate.cs",
               "DocumentMoniker": "E:\\Projects\\b50\\MaimaiBasic\\Enums\\Rate.cs",
               "RelativeDocumentMoniker": "..\\MaimaiBasic\\Enums\\Rate.cs",
@@ -59,19 +145,21 @@
               "RelativeToolTip": "..\\MaimaiBasic\\Enums\\Rate.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-23T08:33:14.235Z"
+              "WhenOpened": "2024-02-23T08:33:14.235Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "ImageGenerator.cs",
               "DocumentMoniker": "E:\\Projects\\b50\\ImageGenerate\\ImageGenerator.cs",
               "RelativeDocumentMoniker": "..\\ImageGenerate\\ImageGenerator.cs",
               "ToolTip": "E:\\Projects\\b50\\ImageGenerate\\ImageGenerator.cs",
               "RelativeToolTip": "..\\ImageGenerate\\ImageGenerator.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGMAAAAFAAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAGMAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-20T18:10:19.578Z"
+              "WhenOpened": "2024-02-20T18:10:19.578Z",
+              "EditorCaption": ""
             }
           ]
         }

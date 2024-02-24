@@ -9,6 +9,9 @@ public class ApiSetting
     public string? CoverUrl { get; set; }
     public string? CoverLocalPath { get; set; }
 
+    public string? CoverPrefix { get; set; }
+    public string? CoverSuffix { get; set; }
+
     public TimeOnly? UpdateSongListTime { get; set; }
     public string? SongListPath { get; set; }
 }

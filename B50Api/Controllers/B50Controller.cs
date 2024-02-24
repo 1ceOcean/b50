@@ -4,6 +4,7 @@ using B50Api.Interface;
 using ImageGenerate;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Text;
 using System.Text.Json;
 
 namespace B50;

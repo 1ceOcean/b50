@@ -1,4 +1,5 @@
-﻿using B50Api.Interface;
+﻿using System.Reflection;
+using B50Api.Interface;
 
 namespace B50;
 
@@ -20,9 +21,16 @@ public class DummyClient : ISongClient
 
         _apiSetting = configuration.GetSection("B50Setting:ApiSetting").Get<ApiSetting>()!;
 
-        using var fileStreamb50 = new FileStream(@"E:\Projects\b50\B50Api\LocalFiles\UserB50.json", FileMode.Open);
-        using var fileStreamcover = new FileStream(@"E:\Projects\b50\ImageGenerate\assets\images\00000.png", FileMode.Open);
-        using var fileStreamAllsong = new FileStream(@"E:\Projects\b50\B50Api\LocalFiles\AllSongs.json", FileMode.Open);
+        var assembly = Assembly.GetEntryAssembly();
+
+        using var fileStreamAllsong = assembly.GetManifestResourceStream("B50Api.LocalFiles.AllSongs.json");
+        using var fileStreamb50 = assembly.GetManifestResourceStream("B50Api.LocalFiles.UserB50.json");
+        using var fileStreamcover = assembly.GetManifestResourceStream("B50Api.LocalFiles.00000.png");
+
+
+        // using var fileStreamb50 = new FileStream(@"E:\Projects\b50\B50Api\LocalFiles\UserB50.json", FileMode.Open);
+        // using var fileStreamcover = new FileStream(@"E:\Projects\b50\ImageGenerate\assets\images\00000.png", FileMode.Open);
+        // using var fileStreamAllsong = new FileStream(@"E:\Projects\b50\B50Api\LocalFiles\AllSongs.json", FileMode.Open);
 
         _streamB50 = new MemoryStream();
         _streamAllsong = new MemoryStream();
@@ -43,10 +51,25 @@ public class DummyClient : ISongClient
         return GetUserB50Async(new UseUserName("",true),CancellationToken.None);
     }
 
-    public Task<Stream> GetCover(int coverId, CancellationToken token)
+    public async Task<Stream> GetCover(int coverId, CancellationToken token)
     {
+        if (_apiSetting.UseLocalCover)
+        {
+            try 
+            {
+                var bytes = await File.ReadAllBytesAsync($"{_apiSetting.CoverLocalPath}/{_apiSetting.CoverPrefix}{coverId:D5}{_apiSetting.CoverSuffix}.png");
+                var stream = new MemoryStream(bytes);
+                return stream;
+            }
+            catch(FileNotFoundException) 
+            {
+                _streamCover.Position = 0;
+                return _streamCover;
+            }
+            
+        }
         _streamCover.Position = 0;
-        return Task.FromResult<Stream>(_streamCover);
+        return _streamCover;
     }
 
     public Task<Stream> GetSongList(CancellationToken token)

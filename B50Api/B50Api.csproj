@@ -17,4 +17,9 @@
     <ProjectReference Include="..\MaimaiBasic\MaimaiBasic.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+  <EmbeddedResource Include="LocalFiles\*.json" />
+  <EmbeddedResource Include="LocalFiles\00000.png" />
+  </ItemGroup>
+
 </Project>
